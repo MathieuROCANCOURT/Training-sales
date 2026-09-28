@@ -13,7 +13,7 @@ public class Training {
 	private int duration;
 	private boolean isInPerson;
 	private float price;
-	
+
 	/**
 	 * @param id
 	 * @param name
@@ -54,6 +54,12 @@ public class Training {
 	public float getPrice() {
 		return price;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		String strInPerson = isInPerson ? "en présentiel" : "en distanciel";
+		return "[" + id + "] Cours de " + name + ", description:" + description + "\n, cette formation dure " + duration
+				+ " jour(s), " + strInPerson + ". \nLe prix est de " + price + "€.";
+	}
+
 }
