@@ -30,6 +30,30 @@ public class Training {
 		this.isInPerson = isInPerson;
 		this.price = price;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public int getDuration() {
+		return duration;
+	}
+
+	public boolean isInPerson() {
+		return isInPerson;
+	}
+
+	public float getPrice() {
+		return price;
+	}
 	
 	
 }
