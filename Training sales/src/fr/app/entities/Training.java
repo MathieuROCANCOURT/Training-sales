@@ -55,6 +55,10 @@ public class Training {
 		return price;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		String strInPerson = isInPerson ? "en présentiel" : "en distanciel";
