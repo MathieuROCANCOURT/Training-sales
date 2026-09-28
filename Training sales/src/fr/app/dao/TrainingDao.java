@@ -86,8 +86,23 @@ public class TrainingDao implements Dao<Training> {
 	}
 
 	@Override
-	public void update(Training t) throws SQLException {
+	public void update(Training training) throws SQLException {
+		String execute = "UPDATE training"
+				+ "SET tr_name = ?, tr_description = ?, tr_duration = ?, tr_inperson = ?, tr_price = ?"
+				+ "WHERE tr_id_training = ?;";
 
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			ps.setString(1, training.getName());
+			ps.setString(2, training.getDescription());
+			ps.setInt(3, training.getDuration());
+			ps.setBoolean(4, training.getIsInPerson());
+			ps.setFloat(5, training.getPrice());
+			ps.setInt(6, training.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning("Error update article request: " + e.getLocalizedMessage());
+		}
 	}
 
 	@Override
