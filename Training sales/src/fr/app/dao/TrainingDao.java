@@ -101,13 +101,21 @@ public class TrainingDao implements Dao<Training> {
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			Logger logger = Logger.getAnonymousLogger();
-			logger.warning("Error update article request: " + e.getLocalizedMessage());
+			logger.warning("Error update training request: " + e.getLocalizedMessage());
 		}
 	}
 
 	@Override
-	public void delete(Training t) throws SQLException {
+	public void delete(Training training) throws SQLException {
+		String execute = "DELETE FROM training WHERE tr_id_training = ?;";
 
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			ps.setInt(1, training.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning("Error delete training request: " + e.getLocalizedMessage());
+		}
 	}
 
 }
