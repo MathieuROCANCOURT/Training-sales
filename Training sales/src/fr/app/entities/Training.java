@@ -47,7 +47,7 @@ public class Training {
 		return duration;
 	}
 
-	public boolean isInPerson() {
+	public boolean getIsInPerson() {
 		return isInPerson;
 	}
 
