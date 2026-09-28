@@ -26,10 +26,22 @@ USE `training_sales`;
 -- --------------------------------------------------------
 
 --
+-- Suppression des tables déjà existants
+--
+
+DROP TABLE IF EXISTS `contains`;
+DROP TABLE IF EXISTS `training`;
+DROP TABLE IF EXISTS `history`;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `address`;
+DROP TABLE IF EXISTS `basket`;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `address`
 --
 
-DROP TABLE IF EXISTS `address`;
 CREATE TABLE IF NOT EXISTS `address` (
   `ad_id_address` int(11) NOT NULL,
   `ad_street` varchar(50) NOT NULL,
@@ -43,7 +55,6 @@ CREATE TABLE IF NOT EXISTS `address` (
 -- Structure de la table `basket`
 --
 
-DROP TABLE IF EXISTS `basket`;
 CREATE TABLE IF NOT EXISTS `basket` (
   `ba_id_basket` int(11) NOT NULL,
   `ba_total_price` decimal(6,2) DEFAULT NULL,
@@ -57,7 +68,6 @@ CREATE TABLE IF NOT EXISTS `basket` (
 -- Structure de la table `contains`
 --
 
-DROP TABLE IF EXISTS `contains`;
 CREATE TABLE IF NOT EXISTS `contains` (
   `co_id_basket` int(11) NOT NULL,
   `co_id_training` int(11) NOT NULL,
@@ -71,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `contains` (
 -- Structure de la table `history`
 --
 
-DROP TABLE IF EXISTS `history`;
 CREATE TABLE IF NOT EXISTS `history` (
   `hi_id_user` int(11) NOT NULL,
   `hi_id_basket` int(11) NOT NULL,
@@ -85,7 +94,6 @@ CREATE TABLE IF NOT EXISTS `history` (
 -- Structure de la table `training`
 --
 
-DROP TABLE IF EXISTS `training`;
 CREATE TABLE IF NOT EXISTS `training` (
   `tr_id_training` int(11) NOT NULL,
   `tr_name` varchar(50) NOT NULL,
@@ -96,13 +104,23 @@ CREATE TABLE IF NOT EXISTS `training` (
   PRIMARY KEY (`tr_id_training`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
+INSERT INTO training(tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price) VALUES
+(1, "Java", "Java SE 8: Syntaxe et POO", 6, 1, 15),
+(2, "Java avancé", "Exceptions, fichiers, JDBC, thread, Multiprocess and sync.", 5, 1, 16.23),
+(3, "Spring", "Spring Core/MVC/Security", 20, 0, 70),
+(4, "PHP Frameworks", "Symphony (Dorémi)", 12, 0, 33),
+(5, "C#", "Dotnet Core", 20, 1, 26.99),
+(6, "Python", "Introduction Python14 et Syntaxe", 10, 1, 16.45),
+(7, "C", "Introduction C, syntaxe et typage", 18, 1, 34.12),
+(8, "Haskell", "Introduction aux paradigmes", 30, 0, 54.82),
+(9, "R", "Prise en main et mise en pratique en affichant la loi normale", 2, 1, 10.42);
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `us_id_user` int(11) NOT NULL,
   `us_lastname` varchar(50) NOT NULL,
