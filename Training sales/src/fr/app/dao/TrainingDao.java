@@ -47,7 +47,7 @@ public class TrainingDao implements Dao<Training> {
 	@Override
 	public List<Training> readAll() throws SQLException {
 		List<Training> listTraining = new ArrayList<Training>();
-		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM t_articles;";
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
 			try (ResultSet rs = ps.executeQuery()) {
@@ -66,6 +66,22 @@ public class TrainingDao implements Dao<Training> {
 
 	@Override
 	public Training read(int id) throws SQLException {
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training"
+				+ "WHERE tr_id_training=?;";
+
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			ps.setInt(1, id);
+			try (ResultSet rs = ps.executeQuery()) {
+				if (rs.next()) {
+					return new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
+							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
+							rs.getFloat("tr_price"));
+				}
+			}
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning(e.getLocalizedMessage());
+		}
 		return null;
 	}
 
