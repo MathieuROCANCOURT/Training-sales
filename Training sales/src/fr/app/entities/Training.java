@@ -28,7 +28,7 @@ public class Training {
 		this.description = description;
 		this.duration = duration;
 		this.isInPerson = isInPerson;
-		this.price = price;
+		this.price = Float.parseFloat(String.format("%.02f", price));
 	}
 
 	public int getId() {
@@ -52,7 +52,7 @@ public class Training {
 	}
 
 	public float getPrice() {
-		return price;
+		return Float.parseFloat(String.format("%.02f", this.price));
 	}
 
 	public void setId(int id) {
