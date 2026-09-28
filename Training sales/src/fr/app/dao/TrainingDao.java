@@ -40,7 +40,7 @@ public class TrainingDao implements Dao<Training> {
 			}
 		} catch (SQLException e) {
 			Logger logger = Logger.getAnonymousLogger();
-			logger.warning(e.getLocalizedMessage());
+			logger.warning("Error create training request: " + e.getLocalizedMessage());
 		}
 	}
 
@@ -59,7 +59,7 @@ public class TrainingDao implements Dao<Training> {
 			}
 		} catch (SQLException e) {
 			Logger logger = Logger.getAnonymousLogger();
-			logger.warning(e.getLocalizedMessage());
+			logger.warning("Error read all training request: " + e.getLocalizedMessage());
 		}
 		return listTraining;
 	}
@@ -80,7 +80,7 @@ public class TrainingDao implements Dao<Training> {
 			}
 		} catch (SQLException e) {
 			Logger logger = Logger.getAnonymousLogger();
-			logger.warning(e.getLocalizedMessage());
+			logger.warning("Error read training request: " + e.getLocalizedMessage());
 		}
 		return null;
 	}
