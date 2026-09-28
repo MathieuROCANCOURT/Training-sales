@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -45,7 +46,22 @@ public class TrainingDao implements Dao<Training> {
 
 	@Override
 	public List<Training> readAll() throws SQLException {
-		return null;
+		List<Training> listTraining = new ArrayList<Training>();
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM t_articles;";
+
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					listTraining.add(new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
+							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
+							rs.getFloat("tr_price")));
+				}
+			}
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning(e.getLocalizedMessage());
+		}
+		return listTraining;
 	}
 
 	@Override
