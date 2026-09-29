@@ -21,7 +21,7 @@ public class Training {
 	/**
 	 * Constructor Training with all attributes.
 	 * 
-	 * @param id Training id.
+	 * @param id Training course id.
 	 * @param name Training course name.
 	 * @param description Training description.
 	 * @param duration Training duration represent in day.
@@ -54,10 +54,20 @@ public class Training {
 		this.setPrice(price);
 	}
 
+	/**
+	 * Get the training course id.
+	 * 
+	 * @return Training course id.
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Get the training course name.
+	 * 
+	 * @return Training course name.
+	 */
 	public String getName() {
 		return name;
 	}
