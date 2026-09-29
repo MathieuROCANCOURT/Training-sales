@@ -53,4 +53,9 @@ public class StockTrainingImpl implements StockTraining {
 	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException {
 		return this.trainingDao.filterOnSiteOrRemote(filterOnSite);
 	}
+	
+	@Override
+	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException {
+		return this.trainingDao.filterKeywordAndOnSiteOrRemote(keyWord, onSite);
+	}
 }
