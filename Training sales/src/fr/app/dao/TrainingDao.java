@@ -85,6 +85,28 @@ public class TrainingDao implements Dao<Training> {
 		return null;
 	}
 
+	public List<Training> searchByKeyWord(String keyWord) {
+		List<Training> listTraining = new ArrayList<Training>();
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training"
+				+ "WHERE tr_name LIKE %?% OR tr_description LIKE %?%;";
+
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			ps.setString(1, keyWord);
+			ps.setString(2, keyWord);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					listTraining.add(new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
+							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
+							rs.getFloat("tr_price")));
+				}
+			}
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning("Error read all training request: " + e.getLocalizedMessage());
+		}
+		return listTraining;
+	}
+
 	@Override
 	public void update(Training training) throws SQLException {
 		String execute = "UPDATE training"
