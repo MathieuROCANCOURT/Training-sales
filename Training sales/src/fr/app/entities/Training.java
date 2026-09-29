@@ -90,6 +90,11 @@ public class Training {
 		return duration;
 	}
 
+	/**
+	 * Get a boolean is the training course is on-site or not.
+	 * 
+	 * @return true if on-site, false if remote.
+	 */
 	public boolean getIsInPerson() {
 		return isInPerson;
 	}
