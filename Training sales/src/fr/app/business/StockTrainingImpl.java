@@ -3,6 +3,7 @@
  */
 package fr.app.business;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import fr.app.dao.TrainingDao;
@@ -22,8 +23,20 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public void addTraining(String name, String description, int duration, boolean isInPerson, float price) {
-
+	public void addTraining(String name, String description, int duration, boolean isInPerson, float price) throws SQLException {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Le nom est obligatoire");
+        }
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("La description est obligatoire");
+        }
+        if (duration < 1) {
+            throw new IllegalArgumentException("La durée de la formation doit être strictement positif.");
+        }
+        if (price < 0) {
+        	throw new IllegalArgumentException("Le prix doit être positif.");
+        }
+        this.trainingDao.create(new Training(name, description, duration, isInPerson, price));
 	}
 
 	@Override
