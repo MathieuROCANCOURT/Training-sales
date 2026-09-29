@@ -134,9 +134,11 @@ public class Training {
 	}
 
 	/**
-	 * {@linkplain https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * Display on console the list of all training courses.<br>
+	 * Use this documentation to format string: {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
 	 * 
-	 * @param listTraining
+	 * @param listTraining List of all training courses.
+	 * 
 	 */
 	public static void displayList(List<Training> listTraining) {
 		System.out.println("Voici la liste des formations\n" + new String(new char[90]).replace('\0', '-'));
@@ -154,9 +156,11 @@ public class Training {
 	}
 
 	/**
-	 * {@linkplain https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * Display on console the list of all training courses.<br>
+	 * Use this documentation to format string: {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
 	 * 
-	 * @param listTraining
+	 * @param listTraining List of all training courses, filtered by keyword.
+	 * @param keyWord Keyword filter. 
 	 */
 	public static void displayList(List<Training> listTraining, String keyWord) {
 		System.out.println("Voici la liste des formations en filtrant avec le mot: " + keyWord + "\n"
