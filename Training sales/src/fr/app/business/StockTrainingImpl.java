@@ -23,12 +23,12 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public void addTraining(long id, String name, int initialQuantity) {
+	public void addTraining(String name, String description, int duration, boolean isInPerson, float price) {
 
 	}
 
 	@Override
-	public void removeTraining(long productId, int quantity) {
+	public void removeTraining(int trainingId) {
 
 	}
 

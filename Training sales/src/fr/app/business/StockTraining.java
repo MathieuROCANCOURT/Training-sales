@@ -10,9 +10,9 @@ import fr.app.entities.Training;
  * 
  */
 public interface StockTraining {
-	void addTraining(long id, String name, int initialQuantity);
+	void addTraining(String name, String description, int duration, boolean isInPerson, float price);
 
-	void removeTraining(long productId, int quantity);
+	void removeTraining(int trainingId);
 
 	List<Training> listProducts();
 }
