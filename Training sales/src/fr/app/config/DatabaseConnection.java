@@ -29,4 +29,13 @@ public class DatabaseConnection {
 
 		return DriverManager.getConnection(URL, USER, PASSWORD);
 	}
+
+	public static void closeConnection() {
+		try {
+			getConnection().close();
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.severe("Error close connection: " + e.getLocalizedMessage());
+		}
+	}
 }
