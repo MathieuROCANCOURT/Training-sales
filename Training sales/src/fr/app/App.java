@@ -35,15 +35,40 @@ public class App {
 		Training.displayList(training.listTraining());
 
 		while (continueLoop) {
-			System.out.print(
-					"Quelle mote clé voulez-vous cherchez ? ('EXIT' pour sortir/Entrée pour réafficher la liste):");
+			System.out.print("Quelle mot clé voulez-vous cherchez ? ('EXIT' pour sortir/Entrée pour aucun mot clé):");
 			String inputUser = sc.nextLine();
-			if (inputUser.isEmpty()) {
-				Training.displayList(training.listTraining());
-			} else if (inputUser.contentEquals("EXIT")) {
+
+			if (inputUser.contentEquals("EXIT")) {
 				continueLoop = false;
+
 			} else {
-				Training.displayList(training.searchByKeyWord(inputUser), inputUser);
+				System.out.println(
+						"Voulez-vous un filtrage en présentiel ou distanciel ? ['p':présentiel/'d':distanciel/non par défaut]");
+				String inputUserOnSite = sc.nextLine();
+
+				if (inputUser.isEmpty()) {
+					switch (inputUserOnSite.toLowerCase()) {
+					case "p":
+						Training.displayList(training.filterOnSiteOrRemote(true), true);
+						break;
+					case "d":
+						Training.displayList(training.filterOnSiteOrRemote(false), false);
+						break;
+					default:
+						Training.displayList(training.listTraining());
+					}
+				} else {
+					switch (inputUserOnSite.toLowerCase()) {
+					case "p":
+						Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, true), inputUser, true);
+						break;
+					case "d":
+						Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, false), inputUser, false);
+						break;
+					default:
+						Training.displayList(training.searchByKeyWord(inputUser), inputUser);
+					}
+				}
 			}
 		}
 
@@ -51,5 +76,4 @@ public class App {
 		sc.close();
 		DatabaseConnection.closeConnection();
 	}
-
 }
