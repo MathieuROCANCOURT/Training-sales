@@ -109,7 +109,7 @@ public class Training {
 	}
 
 	/**
-	 * Set the training course id.
+	 * Modify the training course id.
 	 * 
 	 * @param id New training id.
 	 */
@@ -117,6 +117,11 @@ public class Training {
 		this.id = id;
 	}
 
+	/**
+	 * Modify the training course price.
+	 *  
+	 * @param price New training price.
+	 */
 	public void setPrice(float price) {
 		this.price = Float.parseFloat(String.format("%.2f", price));
 	}
