@@ -81,6 +81,11 @@ public class Training {
 		return description;
 	}
 
+	/**
+	 * Get the duration of the training course in day(s).
+	 * 
+	 * @return Training duration
+	 */
 	public int getDuration() {
 		return duration;
 	}
