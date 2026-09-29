@@ -67,7 +67,7 @@ public class Training {
 	}
 
 	public float getPrice() {
-		return Float.parseFloat(String.format("%.02f", this.price));
+		return Float.parseFloat(String.format("%.2f", this.price));
 	}
 
 	public void setId(int id) {
@@ -75,7 +75,7 @@ public class Training {
 	}
 
 	public void setPrice(float price) {
-		this.price = Float.parseFloat(String.format("%.02f", price));
+		this.price = Float.parseFloat(String.format("%.2f", price));
 	}
 
 	@Override
