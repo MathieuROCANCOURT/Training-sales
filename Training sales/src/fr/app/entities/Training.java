@@ -6,7 +6,9 @@ package fr.app.entities;
 import java.util.List;
 
 /**
+ * Training is an entity to generate, read, update or delete in the database.
  * 
+ * @author RocancourtM
  */
 public class Training {
 	private int id;
