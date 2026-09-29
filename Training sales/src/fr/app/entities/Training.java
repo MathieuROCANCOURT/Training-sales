@@ -3,6 +3,8 @@
  */
 package fr.app.entities;
 
+import java.util.List;
+
 /**
  * 
  */
@@ -85,4 +87,19 @@ public class Training {
 				+ " jour(s), " + strInPerson + ". \nLe prix est de " + price + "€.";
 	}
 
+	/**
+	 * {@linkplain https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * 
+	 * @param listTraining
+	 */
+	public static void displayList(List<Training> listTraining) {
+		System.out.println("Voici la liste des formations\n" + new String(new char[30]).replace('\0', '-'));
+		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description", "Durée (j)",
+				"Sur site", "Prix (€)"));
+
+		for (Training training : listTraining) {
+			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name, training.description,
+					training.duration, training.isInPerson ? "Oui" : "Distance", training.getPrice()));
+		}
+	}
 }
