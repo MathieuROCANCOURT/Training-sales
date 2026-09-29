@@ -4,6 +4,7 @@
 package fr.app.business;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.app.dao.TrainingDao;
@@ -46,7 +47,7 @@ public class StockTrainingImpl implements StockTraining {
 
 	@Override
 	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
-		return null;
+		return this.trainingDao.searchByKeyWord(keyWord);
 	}
 
 }

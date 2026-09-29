@@ -85,7 +85,7 @@ public class TrainingDao implements Dao<Training> {
 		return null;
 	}
 
-	public List<Training> searchByKeyWord(String keyWord) {
+	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training"
 				+ "WHERE tr_name LIKE %?% OR tr_description LIKE %?%;";
