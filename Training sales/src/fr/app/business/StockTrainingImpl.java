@@ -40,12 +40,12 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public void removeTraining(int trainingId) {
-
+	public List<Training> listProducts() throws SQLException {
+		return this.trainingDao.readAll();
 	}
 
 	@Override
-	public List<Training> listProducts() {
+	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
 		return null;
 	}
 
