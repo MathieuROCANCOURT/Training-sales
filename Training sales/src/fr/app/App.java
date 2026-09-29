@@ -16,20 +16,24 @@ import fr.app.entities.Training;
  * 
  */
 public class App {
-
 	/**
-	 * @throws SQLException 
+	 * Main program that user can input a keyword, display training list or exit the
+	 * program.
+	 * 
+	 * @param args Nothing
+	 * @throws SQLException Exception SQL or don't connect to database.
 	 */
 	public static void main(String[] args) throws SQLException {
 		StockTraining training = new StockTrainingImpl(new TrainingDao());
 		boolean continueLoop = true;
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("Bienvenue sur le site pour la vente de formation.");
 		Training.displayList(training.listTraining());
-		
+
 		while (continueLoop) {
-			System.out.print("Quelle mote clé voulez-vous cherchez ? ('EXIT' pour sortir/Entrée pour réafficher la liste):");
+			System.out.print(
+					"Quelle mote clé voulez-vous cherchez ? ('EXIT' pour sortir/Entrée pour réafficher la liste):");
 			String inputUser = sc.nextLine();
 			if (inputUser.isEmpty()) {
 				Training.displayList(training.listTraining());
@@ -39,7 +43,7 @@ public class App {
 				Training.displayList(training.searchByKeyWord(inputUser), inputUser);
 			}
 		}
-		
+
 		System.out.println("En revoir et à la prochaine 😉😉 !");
 		sc.close();
 		DatabaseConnection.closeConnection();
