@@ -21,12 +21,12 @@ public class Training {
 	/**
 	 * Constructor Training with all attributes.
 	 * 
-	 * @param id Training course id.
-	 * @param name Training course name.
+	 * @param id          Training course id.
+	 * @param name        Training course name.
 	 * @param description Training description.
-	 * @param duration Training duration represent in day.
-	 * @param isInPerson true is it's on-site, else it's on remote.
-	 * @param price Training price.
+	 * @param duration    Training duration represent in day.
+	 * @param isInPerson  true is it's on-site, else it's on remote.
+	 * @param price       Training price.
 	 */
 	public Training(int id, String name, String description, int duration, boolean isInPerson, float price) {
 		this.id = id;
@@ -40,11 +40,11 @@ public class Training {
 	/**
 	 * Constructor Training without id attribute.
 	 * 
-	 * @param name Training course name.
+	 * @param name        Training course name.
 	 * @param description Training description.
-	 * @param duration Training duration represent in day.
-	 * @param isInPerson true is it's on-site, else it's on remote.
-	 * @param price Training price.
+	 * @param duration    Training duration represent in day.
+	 * @param isInPerson  true is it's on-site, else it's on remote.
+	 * @param price       Training price.
 	 */
 	public Training(String name, String description, int duration, boolean isInPerson, float price) {
 		this.name = name;
@@ -119,7 +119,7 @@ public class Training {
 
 	/**
 	 * Modify the training course price.
-	 *  
+	 * 
 	 * @param price New training price.
 	 */
 	public void setPrice(float price) {
@@ -135,7 +135,8 @@ public class Training {
 
 	/**
 	 * Display on console the list of all training courses.<br>
-	 * Use this documentation to format string: {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * Use this documentation to format string:
+	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
 	 * 
 	 * @param listTraining List of all training courses.
 	 * 
@@ -147,20 +148,20 @@ public class Training {
 		System.out.println(new String(new char[90]).replace('\0', '-'));
 
 		for (Training training : listTraining) {
-			System.out.println(
-					String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name, training.description,
-							training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
+			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
+					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
 		}
-		
+
 		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
 
 	/**
 	 * Display on console the list of all training courses.<br>
-	 * Use this documentation to format string: {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * Use this documentation to format string:
+	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
 	 * 
 	 * @param listTraining List of all training courses, filtered by keyword.
-	 * @param keyWord Keyword filter. 
+	 * @param keyWord      Keyword filter.
 	 */
 	public static void displayList(List<Training> listTraining, String keyWord) {
 		System.out.println("Voici la liste des formations en filtrant avec le mot: " + keyWord + "\n"
@@ -170,9 +171,31 @@ public class Training {
 		System.out.println(new String(new char[90]).replace('\0', '-'));
 
 		for (Training training : listTraining) {
-			System.out.println(
-					String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name, training.description,
-							training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
+			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
+					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
+		}
+
+		System.out.println(new String(new char[90]).replace('\0', '='));
+	}
+
+	/**
+	 * Display on console the list of all training courses.<br>
+	 * Use this documentation to format string:
+	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * 
+	 * @param listTraining List of all training courses, filtered by onSite.
+	 * @param onSite
+	 */
+	public static void displayList(List<Training> listTraining, boolean onSite) {
+		System.out.println("Voici la liste des formations " + (onSite ? "en présentiel" : "en distanciel") + "\n"
+				+ new String(new char[90]).replace('\0', '-'));
+		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
+				"Durée (j)", "Sur site", "Prix (€)"));
+		System.out.println(new String(new char[90]).replace('\0', '-'));
+
+		for (Training training : listTraining) {
+			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
+					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
 		}
 
 		System.out.println(new String(new char[90]).replace('\0', '='));
