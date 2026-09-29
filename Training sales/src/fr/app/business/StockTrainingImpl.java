@@ -18,7 +18,6 @@ public class StockTrainingImpl implements StockTraining {
 	 * @param trainingDao
 	 */
 	public StockTrainingImpl(TrainingDao trainingDao) {
-		super();
 		this.trainingDao = trainingDao;
 	}
 
