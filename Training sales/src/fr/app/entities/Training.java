@@ -72,6 +72,11 @@ public class Training {
 		return name;
 	}
 
+	/**
+	 * Get the training course description.
+	 * 
+	 * @return Training description.
+	 */
 	public String getDescription() {
 		return description;
 	}
