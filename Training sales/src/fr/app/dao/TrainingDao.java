@@ -18,6 +18,13 @@ import fr.app.entities.Training;
  * 
  */
 public class TrainingDao implements Dao<Training> {
+	private static final String ID_TRAINING_SQL = "tr_id_training";
+	private static final String NAME_SQL = "tr_name";
+	private static final String DESCRIPTION_SQL = "tr_description";
+	private static final String DURATION_SQL = "tr_duration";
+	private static final String INPERSON_SQL = "tr_inperson";
+	private static final String PRICE_SQL = "tr_price";
+
 	@Override
 	public void create(Training training) throws SQLException {
 		String execute = "INSERT INTO training(tr_name, tr_description, tr_duration, tr_inperson, tr_price) VALUES (?,?,?,?,?);";
@@ -52,9 +59,9 @@ public class TrainingDao implements Dao<Training> {
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
-					listTraining.add(new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
-							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
-							rs.getFloat("tr_price")));
+					listTraining.add(new Training(rs.getInt(ID_TRAINING_SQL), rs.getString(NAME_SQL),
+							rs.getString(DESCRIPTION_SQL), rs.getInt(DURATION_SQL), rs.getBoolean(INPERSON_SQL),
+							rs.getFloat(PRICE_SQL)));
 				}
 			}
 		} catch (SQLException e) {
@@ -73,9 +80,9 @@ public class TrainingDao implements Dao<Training> {
 			ps.setInt(1, id);
 			try (ResultSet rs = ps.executeQuery()) {
 				if (rs.next()) {
-					return new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
-							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
-							rs.getFloat("tr_price"));
+					return new Training(rs.getInt(ID_TRAINING_SQL), rs.getString(NAME_SQL),
+							rs.getString(DESCRIPTION_SQL), rs.getInt(DURATION_SQL), rs.getBoolean(INPERSON_SQL),
+							rs.getFloat(PRICE_SQL));
 				}
 			}
 		} catch (SQLException e) {
@@ -94,9 +101,9 @@ public class TrainingDao implements Dao<Training> {
 			ps.setString(2, "%" + keyWord + "%");
 			try (ResultSet rs = ps.executeQuery()) {
 				while (rs.next()) {
-					listTraining.add(new Training(rs.getInt("tr_id_training"), rs.getString("tr_name"),
-							rs.getString("tr_description"), rs.getInt("tr_duration"), rs.getBoolean("tr_inperson"),
-							rs.getFloat("tr_price")));
+					listTraining.add(new Training(rs.getInt(ID_TRAINING_SQL), rs.getString(NAME_SQL),
+							rs.getString(DESCRIPTION_SQL), rs.getInt(DURATION_SQL), rs.getBoolean(INPERSON_SQL),
+							rs.getFloat(PRICE_SQL)));
 				}
 			}
 		} catch (SQLException e) {
