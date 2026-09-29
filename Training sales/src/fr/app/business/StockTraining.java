@@ -14,7 +14,7 @@ public interface StockTraining {
 	void addTraining(String name, String description, int duration, boolean isInPerson, float price)
 			throws SQLException;
 
-	List<Training> listProducts()  throws SQLException;
-	
+	List<Training> listTraining() throws SQLException;
+
 	List<Training> searchByKeyWord(String keyWord) throws SQLException;
 }

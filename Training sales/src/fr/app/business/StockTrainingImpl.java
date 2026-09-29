@@ -4,7 +4,6 @@
 package fr.app.business;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.app.dao.TrainingDao;
@@ -41,7 +40,7 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public List<Training> listProducts() throws SQLException {
+	public List<Training> listTraining() throws SQLException {
 		return this.trainingDao.readAll();
 	}
 
