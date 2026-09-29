@@ -18,5 +18,7 @@ public interface StockTraining {
 
 	List<Training> searchByKeyWord(String keyWord) throws SQLException;
 
-	List<Training> filterOnSiteOrRemote(boolean b) throws SQLException;
+	List<Training> filterOnSiteOrRemote(boolean onSite) throws SQLException;
+
+	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException;
 }
