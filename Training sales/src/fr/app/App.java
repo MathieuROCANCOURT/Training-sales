@@ -15,6 +15,8 @@ import fr.app.entities.Training;
 /**
  * This class launches the main program. The application connects to the
  * database to access the training courses.
+ * 
+ * @author RocancourtM
  */
 public class App {
 	/**
