@@ -108,6 +108,11 @@ public class Training {
 		return Float.parseFloat(String.format("%.2f", this.price));
 	}
 
+	/**
+	 * Set the training course id.
+	 * 
+	 * @param id New training id.
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
