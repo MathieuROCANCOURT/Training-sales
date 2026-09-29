@@ -19,12 +19,14 @@ public class Training {
 	private float price;
 
 	/**
-	 * @param id
-	 * @param name
-	 * @param description
-	 * @param duration
-	 * @param isInPerson
-	 * @param price
+	 * Constructor Training with all attributes.
+	 * 
+	 * @param id Training id.
+	 * @param name Training course name.
+	 * @param description Training description.
+	 * @param duration Training duration represent in day.
+	 * @param isInPerson true is it's on-site, else it's on remote.
+	 * @param price Training price.
 	 */
 	public Training(int id, String name, String description, int duration, boolean isInPerson, float price) {
 		this.id = id;
@@ -36,11 +38,13 @@ public class Training {
 	}
 
 	/**
-	 * @param name
-	 * @param description
-	 * @param duration
-	 * @param isInPerson
-	 * @param price
+	 * Constructor Training without id attribute.
+	 * 
+	 * @param name Training course name.
+	 * @param description Training description.
+	 * @param duration Training duration represent in day.
+	 * @param isInPerson true is it's on-site, else it's on remote.
+	 * @param price Training price.
 	 */
 	public Training(String name, String description, int duration, boolean isInPerson, float price) {
 		this.name = name;
