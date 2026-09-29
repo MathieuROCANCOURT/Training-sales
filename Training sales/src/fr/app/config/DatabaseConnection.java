@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  * 
  */
 public class DatabaseConnection {
-	private static final String URL = "jdbc:mariadb://localhost:3306/shop";
+	private static final String URL = "jdbc:mariadb://localhost:3306/training_sales";
 	private static final String USER = "root";
 	private static final String PASSWORD = System.getProperty("database.password");
 
