@@ -99,6 +99,11 @@ public class Training {
 		return isInPerson;
 	}
 
+	/**
+	 * Get the training course price.
+	 * 
+	 * @return Training price.
+	 */
 	public float getPrice() {
 		return Float.parseFloat(String.format("%.2f", this.price));
 	}
