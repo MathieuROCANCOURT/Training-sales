@@ -11,9 +11,10 @@ import fr.app.entities.Training;
  * 
  */
 public interface StockTraining {
-	void addTraining(String name, String description, int duration, boolean isInPerson, float price) throws SQLException;
-
-	void removeTraining(int trainingId) throws SQLException;
+	void addTraining(String name, String description, int duration, boolean isInPerson, float price)
+			throws SQLException;
 
 	List<Training> listProducts();
+	
+	List<Training> searchByKeyWord(String keyWord);
 }
