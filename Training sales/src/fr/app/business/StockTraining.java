@@ -17,4 +17,6 @@ public interface StockTraining {
 	List<Training> listTraining() throws SQLException;
 
 	List<Training> searchByKeyWord(String keyWord) throws SQLException;
+
+	List<Training> filterOnSiteOrRemote(boolean b) throws SQLException;
 }
