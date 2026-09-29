@@ -108,6 +108,26 @@ public class TrainingDao implements Dao<Training> {
 			}
 		} catch (SQLException e) {
 			Logger logger = Logger.getAnonymousLogger();
+			logger.warning("Error read training with key word request: " + e.getLocalizedMessage());
+		}
+		return listTraining;
+	}
+	
+	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException {
+		List<Training> listTraining = new ArrayList<Training>();
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training WHERE tr_inperson=?;";
+
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			ps.setBoolean(1, filterOnSite);
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					listTraining.add(new Training(rs.getInt(ID_TRAINING_SQL), rs.getString(NAME_SQL),
+							rs.getString(DESCRIPTION_SQL), rs.getInt(DURATION_SQL), rs.getBoolean(INPERSON_SQL),
+							rs.getFloat(PRICE_SQL)));
+				}
+			}
+		} catch (SQLException e) {
+			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read all training request: " + e.getLocalizedMessage());
 		}
 		return listTraining;
