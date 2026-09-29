@@ -28,7 +28,22 @@ public class Training {
 		this.description = description;
 		this.duration = duration;
 		this.isInPerson = isInPerson;
-		this.price = Float.parseFloat(String.format("%.02f", price));
+		this.setPrice(price);
+	}
+
+	/**
+	 * @param name
+	 * @param description
+	 * @param duration
+	 * @param isInPerson
+	 * @param price
+	 */
+	public Training(String name, String description, int duration, boolean isInPerson, float price) {
+		this.name = name;
+		this.description = description;
+		this.duration = duration;
+		this.isInPerson = isInPerson;
+		this.setPrice(price);
 	}
 
 	public int getId() {
@@ -57,6 +72,10 @@ public class Training {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public void setPrice(float price) {
+		this.price = Float.parseFloat(String.format("%.02f", this.price));
 	}
 
 	@Override
