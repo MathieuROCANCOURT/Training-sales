@@ -4,16 +4,55 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
+ * Dao interface where each table can be send request to the database where the
+ * administrator can:
+ * <ul>
+ * <li>Create an object</li>
+ * <li>Dead all objects</li>
+ * <li>Read an object</li>
+ * <li>Update an object</li>
+ * <li>Delete an object</li>
+ * </ul>
  * 
+ * @author RocancourtM
  */
 public interface Dao<T> {
+	/**
+	 * Create an object in database with associated table and to affect an id.
+	 * 
+	 * @param t Object to create in database.
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public void create(T t) throws SQLException;
 
+	/**
+	 * Read all objects in database with associated table.
+	 * 
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public List<T> readAll() throws SQLException;
 
+	/**
+	 * Read an object in database with associated table and associated id.
+	 * 
+	 * @param id Id to read in database.
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public T read(int id) throws SQLException;
 
+	/**
+	 * Update an object in database with associated table and associated id.
+	 * 
+	 * @param t Object to update in database.
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public void update(T t) throws SQLException;
 
+	/**
+	 * Delete an object in database with table associated.
+	 * 
+	 * @param t Object to create in database.
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public void delete(T t) throws SQLException;
 }
