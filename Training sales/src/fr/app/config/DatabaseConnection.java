@@ -53,7 +53,12 @@ public class DatabaseConnection {
 		return DriverManager.getConnection(URL, USER, PASSWORD);
 	}
 
-
+	/**
+	 * Close connection to 'training_sales' database.
+	 * 
+	 * @throws SQLException           Error SQL Request or Timeout connection.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
+	 */
 	public static void closeConnection() throws SQLException, ClassNotFoundException {
 		try {
 			getConnection().close();
