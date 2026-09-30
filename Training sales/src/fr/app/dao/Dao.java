@@ -28,7 +28,7 @@ public interface Dao<T> {
 	/**
 	 * Read all objects in database with associated table.
 	 * 
-	 * return List of all elements in a table.
+	 * @return List of all elements in a table.
 	 * @throws SQLException Generate an error SQL request.
 	 */
 	public List<T> readAll() throws SQLException;
