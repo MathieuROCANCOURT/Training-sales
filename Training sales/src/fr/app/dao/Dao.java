@@ -28,6 +28,7 @@ public interface Dao<T> {
 	/**
 	 * Read all objects in database with associated table.
 	 * 
+	 * return List of all elements in a table.
 	 * @throws SQLException Generate an error SQL request.
 	 */
 	public List<T> readAll() throws SQLException;
@@ -36,6 +37,7 @@ public interface Dao<T> {
 	 * Read an object in database with associated table and associated id.
 	 * 
 	 * @param id Id to read in database.
+	 * @return The object associates by id.
 	 * @throws SQLException Generate an error SQL request.
 	 */
 	public T read(int id) throws SQLException;
