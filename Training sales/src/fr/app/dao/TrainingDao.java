@@ -101,7 +101,7 @@ public class TrainingDao implements Dao<Training> {
 	 * @param keyWord Word to filter in SQL request within name and description.
 	 * @return A List of all rows in a table that meet the filter criteria.
 	 * @throws SQLException Generate an error SQL request.
-	 * @throws ClassNotFoundException 
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public List<Training> searchByKeyWord(String keyWord) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
@@ -132,7 +132,7 @@ public class TrainingDao implements Dao<Training> {
 	 * @param filterOnSite Filter by on-site if true, else filter by remote.
 	 * @return A List of all rows in a table that meet the filter criteria.
 	 * @throws SQLException Generate an error SQL request.
-	 * @throws ClassNotFoundException 
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
@@ -163,8 +163,8 @@ public class TrainingDao implements Dao<Training> {
 	 *                     description.
 	 * @param filterOnSite Filter by on-site if true, else filter by remote.
 	 * @return A List of all rows in a table that meet the filter criteria.
-	 * @throws SQLException Generate an error SQL request.
-	 * @throws ClassNotFoundException 
+	 * @throws SQLException           Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean filterOnSite) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
