@@ -40,22 +40,18 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public List<Training> listTraining() throws SQLException {
-		return this.trainingDao.readAll();
-	}
-
-	@Override
-	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
+	public List<Training> displayListByKeyWord(String keyWord) throws SQLException {
+		if (keyWord.isEmpty()) {
+			return this.trainingDao.readAll();
+		}
 		return this.trainingDao.searchByKeyWord(keyWord);
-	}
-
-	@Override
-	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException {
-		return this.trainingDao.filterOnSiteOrRemote(filterOnSite);
 	}
 	
 	@Override
 	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException {
+		if (keyWord.isEmpty()) {
+			return this.trainingDao.filterOnSiteOrRemote(onSite);
+		}
 		return this.trainingDao.filterKeywordAndOnSiteOrRemote(keyWord, onSite);
 	}
 }
