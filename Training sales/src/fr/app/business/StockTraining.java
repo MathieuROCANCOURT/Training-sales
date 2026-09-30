@@ -39,11 +39,20 @@ public interface StockTraining {
 	 * 
 	 * @param keyWord Word to filter in SQL Request on name and description columns.
 	 * @return Training list with keyWord filter or all list if keyWord is empty.
-	 * @throws SQLException Error SQL Request or Timeout connection.
+	 * @throws SQLException           Error SQL Request or Timeout connection.
 	 * @throws ClassNotFoundException he Driver Class isn't found.
 	 */
 	List<Training> displayListByKeyWord(String keyWord) throws SQLException, ClassNotFoundException;
 
+	/**
+	 * Send a SQL request with the keyWord and if on-site or remote in the criteria.
+	 * 
+	 * @param keyWord Word to filter in SQL Request on name and description columns.
+	 * @param onSite  true if filter on-site, false if filter remote.
+	 * @return Training list with keyWord filter or all list if keyWord is empty.
+	 * @throws SQLException           Error SQL Request or Timeout connection.
+	 * @throws ClassNotFoundException he Driver Class isn't found.
+	 */
 	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite)
 			throws SQLException, ClassNotFoundException;
 }
