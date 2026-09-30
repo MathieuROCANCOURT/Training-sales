@@ -14,11 +14,7 @@ public interface StockTraining {
 	void addTraining(String name, String description, int duration, boolean isInPerson, float price)
 			throws SQLException;
 
-	List<Training> listTraining() throws SQLException;
-
-	List<Training> searchByKeyWord(String keyWord) throws SQLException;
-
-	List<Training> filterOnSiteOrRemote(boolean onSite) throws SQLException;
+	List<Training> displayListByKeyWord(String keyWord) throws SQLException;
 
 	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException;
 }
