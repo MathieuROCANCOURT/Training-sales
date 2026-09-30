@@ -14,7 +14,7 @@ public class Basket {
 	private List<Training> listTraining = new ArrayList<Training>();
 	private float totalPrice = 0f;
 	private boolean isBuy = false;
-	
+
 	public Basket() {
 	}
 
@@ -49,4 +49,9 @@ public class Basket {
 		return isBuy;
 	}
 
+	public void addToBasket(Training training) {
+		if (!this.isBuy) {
+			this.listTraining.add(training);
+		}
+	}
 }
