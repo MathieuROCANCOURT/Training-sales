@@ -127,6 +127,9 @@ public class Training {
 	 * @param price New training price.
 	 */
 	public void setPrice(float price) {
+		if (price < 0) {
+			price = Math.abs(price);
+		}
 		this.price = Float.parseFloat(String.format("%.2f", price));
 	}
 
