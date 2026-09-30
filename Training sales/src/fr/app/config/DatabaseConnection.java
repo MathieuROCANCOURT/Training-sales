@@ -53,7 +53,8 @@ public class DatabaseConnection {
 		return DriverManager.getConnection(URL, USER, PASSWORD);
 	}
 
-	public static void closeConnection() throws ClassNotFoundException {
+
+	public static void closeConnection() throws SQLException, ClassNotFoundException {
 		try {
 			getConnection().close();
 		} catch (SQLException | ClassNotFoundException e) {
