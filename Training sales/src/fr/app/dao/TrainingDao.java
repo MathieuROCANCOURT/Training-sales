@@ -160,8 +160,8 @@ public class TrainingDao implements Dao<Training> {
 
 	@Override
 	public void update(Training training) throws SQLException {
-		String execute = "UPDATE training"
-				+ "SET tr_name = ?, tr_description = ?, tr_duration = ?, tr_inperson = ?, tr_price = ?"
+		String execute = "UPDATE training "
+				+ "SET tr_name = ?, tr_description = ?, tr_duration = ?, tr_inperson = ?, tr_price = ? "
 				+ "WHERE tr_id_training = ?;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
