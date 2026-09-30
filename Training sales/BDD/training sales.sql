@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS `basket`;
 --
 
 CREATE TABLE IF NOT EXISTS `address` (
-  `ad_id_address` int(11) NOT NULL,
+  `ad_id_address` int(11) NOT NULL AUTO_INCREMENT,
   `ad_street` varchar(50) NOT NULL,
   `ad_city` varchar(50) NOT NULL,
   PRIMARY KEY (`ad_id_address`)
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `address` (
 --
 
 CREATE TABLE IF NOT EXISTS `basket` (
-  `ba_id_basket` int(11) NOT NULL,
+  `ba_id_basket` int(11) NOT NULL AUTO_INCREMENT,
   `ba_total_price` decimal(6,2) DEFAULT NULL,
   `ba_buy` tinyint(1) NOT NULL,
   PRIMARY KEY (`ba_id_basket`)
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `history` (
 --
 
 CREATE TABLE IF NOT EXISTS `training` (
-  `tr_id_training` int(11) NOT NULL,
+  `tr_id_training` int(11) NOT NULL AUTO_INCREMENT,
   `tr_name` varchar(50) NOT NULL,
   `tr_description` text NOT NULL,
   `tr_duration` int(11) NOT NULL,
@@ -122,7 +122,7 @@ INSERT INTO training(tr_id_training, tr_name, tr_description, tr_duration, tr_in
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `us_id_user` int(11) NOT NULL,
+  `us_id_user` int(11) NOT NULL AUTO_INCREMENT,
   `us_lastname` varchar(50) NOT NULL,
   `us_firstname` varchar(50) NOT NULL,
   `us_email` varchar(50) NOT NULL,
