@@ -24,9 +24,10 @@ public class App {
 	 * program.
 	 * 
 	 * @param args Nothing
-	 * @throws SQLException Exception SQL or don't connect to database.
+	 * @throws SQLException           Exception SQL or don't connect to database.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
-	public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		StockTraining training = new StockTrainingImpl(new TrainingDao());
 		boolean continueLoop = true;
 		Scanner sc = new Scanner(System.in);
