@@ -168,7 +168,10 @@ public class Training {
 	/**
 	 * Display on console the list of all training courses.<br>
 	 * Use this documentation to format string:
-	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
+	 * 
+	 * @see <a
+	 *      href=https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/>Formatted
+	 *      String to console</a>
 	 * 
 	 * @param listTraining List of all training courses.
 	 * 
