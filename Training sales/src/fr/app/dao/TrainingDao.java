@@ -73,7 +73,7 @@ public class TrainingDao implements Dao<Training> {
 
 	@Override
 	public Training read(int id) throws SQLException {
-		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training"
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
 				+ "WHERE tr_id_training=?;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
@@ -94,7 +94,8 @@ public class TrainingDao implements Dao<Training> {
 
 	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
 		List<Training> listTraining = new ArrayList<Training>();
-		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training WHERE tr_name LIKE ? OR tr_description LIKE ?;";
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
+				+ "WHERE tr_name LIKE ? OR tr_description LIKE ?;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
 			ps.setString(1, "%" + keyWord + "%");
@@ -115,7 +116,8 @@ public class TrainingDao implements Dao<Training> {
 
 	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException {
 		List<Training> listTraining = new ArrayList<Training>();
-		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training WHERE tr_inperson=?;";
+		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
+				+ "WHERE tr_inperson=?;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
 			ps.setBoolean(1, filterOnSite);
