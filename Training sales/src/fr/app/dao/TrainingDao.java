@@ -28,7 +28,7 @@ public class TrainingDao implements Dao<Training> {
 	private static final String PRICE_SQL = "tr_price";
 
 	@Override
-	public void create(Training training) throws SQLException {
+	public void create(Training training) throws SQLException, ClassNotFoundException {
 		String execute = "INSERT INTO training(tr_name, tr_description, tr_duration, tr_inperson, tr_price) VALUES (?,?,?,?,?);";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute,
@@ -47,14 +47,14 @@ public class TrainingDao implements Dao<Training> {
 					throw new SQLException("Insert succeeded but no ID obtained.");
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error create training request: " + e.getLocalizedMessage());
 		}
 	}
 
 	@Override
-	public List<Training> readAll() throws SQLException {
+	public List<Training> readAll() throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training;";
 
@@ -66,7 +66,7 @@ public class TrainingDao implements Dao<Training> {
 							rs.getFloat(PRICE_SQL)));
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read all training request: " + e.getLocalizedMessage());
 		}
@@ -74,7 +74,7 @@ public class TrainingDao implements Dao<Training> {
 	}
 
 	@Override
-	public Training read(int id) throws SQLException {
+	public Training read(int id) throws SQLException, ClassNotFoundException {
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
 				+ "WHERE tr_id_training=?;";
 
@@ -87,7 +87,7 @@ public class TrainingDao implements Dao<Training> {
 							rs.getFloat(PRICE_SQL));
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read training request: " + e.getLocalizedMessage());
 		}
@@ -101,8 +101,9 @@ public class TrainingDao implements Dao<Training> {
 	 * @param keyWord Word to filter in SQL request within name and description.
 	 * @return A List of all rows in a table that meet the filter criteria.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException 
 	 */
-	public List<Training> searchByKeyWord(String keyWord) throws SQLException {
+	public List<Training> searchByKeyWord(String keyWord) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
 				+ "WHERE tr_name LIKE ? OR tr_description LIKE ?;";
@@ -117,7 +118,7 @@ public class TrainingDao implements Dao<Training> {
 							rs.getFloat(PRICE_SQL)));
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read training with key word request: " + e.getLocalizedMessage());
 		}
@@ -131,8 +132,9 @@ public class TrainingDao implements Dao<Training> {
 	 * @param filterOnSite Filter by on-site if true, else filter by remote.
 	 * @return A List of all rows in a table that meet the filter criteria.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException 
 	 */
-	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException {
+	public List<Training> filterOnSiteOrRemote(boolean filterOnSite) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
 				+ "WHERE tr_inperson=?;";
@@ -146,7 +148,7 @@ public class TrainingDao implements Dao<Training> {
 							rs.getFloat(PRICE_SQL)));
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read all training request: " + e.getLocalizedMessage());
 		}
@@ -162,8 +164,9 @@ public class TrainingDao implements Dao<Training> {
 	 * @param filterOnSite Filter by on-site if true, else filter by remote.
 	 * @return A List of all rows in a table that meet the filter criteria.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException 
 	 */
-	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean filterOnSite) throws SQLException {
+	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean filterOnSite) throws SQLException, ClassNotFoundException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
 				+ "WHERE ( tr_name LIKE ? OR tr_description LIKE ? ) AND tr_inperson=?;";
@@ -179,7 +182,7 @@ public class TrainingDao implements Dao<Training> {
 							rs.getFloat(PRICE_SQL)));
 				}
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error read all training request: " + e.getLocalizedMessage());
 		}
@@ -187,7 +190,7 @@ public class TrainingDao implements Dao<Training> {
 	}
 
 	@Override
-	public void update(Training training) throws SQLException {
+	public void update(Training training) throws SQLException, ClassNotFoundException {
 		String execute = "UPDATE training "
 				+ "SET tr_name = ?, tr_description = ?, tr_duration = ?, tr_inperson = ?, tr_price = ? "
 				+ "WHERE tr_id_training = ?;";
@@ -200,20 +203,20 @@ public class TrainingDao implements Dao<Training> {
 			ps.setFloat(5, training.getPrice());
 			ps.setInt(6, training.getId());
 			ps.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error update training request: " + e.getLocalizedMessage());
 		}
 	}
 
 	@Override
-	public void delete(Training training) throws SQLException {
+	public void delete(Training training) throws SQLException, ClassNotFoundException {
 		String execute = "DELETE FROM training WHERE tr_id_training = ?;";
 
 		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
 			ps.setInt(1, training.getId());
 			ps.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.warning("Error delete training request: " + e.getLocalizedMessage());
 		}
