@@ -6,6 +6,7 @@ package fr.app.config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLTimeoutException;
 import java.util.logging.Logger;
 
 /**
@@ -33,7 +34,15 @@ public class DatabaseConnection {
 	private DatabaseConnection() {
 	}
 
-	public static Connection getConnection() throws SQLException {
+	/**
+	 * Create a connection to 'training_sales' database.
+	 * 
+	 * @return A connection with a 'training_sales' database. SQL statements are
+	 *         executed and results are returned within the context of a connection.
+	 * @throws SQLException           Error SQL Request or Timeout connection.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
+	 */
+	public static Connection getConnection() throws SQLException, ClassNotFoundException {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -44,10 +53,10 @@ public class DatabaseConnection {
 		return DriverManager.getConnection(URL, USER, PASSWORD);
 	}
 
-	public static void closeConnection() {
+	public static void closeConnection() throws ClassNotFoundException {
 		try {
 			getConnection().close();
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.severe("Error close connection: " + e.getLocalizedMessage());
 		}
