@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.util.logging.Logger;
 
 /**
+ * Create a connection with 'training_sales' database with MariaDB.
  * 
+ * @author RocancourtM
  */
 public class DatabaseConnection {
 	private static final String URL = "jdbc:mariadb://localhost:3306/training_sales";
