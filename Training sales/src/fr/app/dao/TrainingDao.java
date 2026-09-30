@@ -15,7 +15,9 @@ import fr.app.config.DatabaseConnection;
 import fr.app.entities.Training;
 
 /**
+ * Interact with the training table in the database using SQL requests.
  * 
+ * @author RocancourtM
  */
 public class TrainingDao implements Dao<Training> {
 	private static final String ID_TRAINING_SQL = "tr_id_training";
