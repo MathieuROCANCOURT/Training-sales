@@ -3,10 +3,10 @@
 
 ## Context
 
-Create an application where the users can be buy the training courses.
-The user can buy this training course where the user add in the basket.
+Create an application where the users can buy the training courses.
+The user can buy this training course where the user adds it to the basket.
 
-Nextly, the client can be connect to an account with login and password and the commands it's associate to differents clients.
+Nextly, the client can be connected to an account with login and password and the commands associate with different clients.
 
 The display is on console.
 
