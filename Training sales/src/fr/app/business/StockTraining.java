@@ -34,6 +34,14 @@ public interface StockTraining {
 	void addTraining(String name, String description, int duration, boolean isInPerson, float price)
 			throws SQLException, ClassNotFoundException, IllegalArgumentException;
 
+	/**
+	 * Send a SQL request with the keyWord in the criteria.
+	 * 
+	 * @param keyWord Word to filter in SQL Request on name and description columns.
+	 * @return Training list with keyWord filter or all list if keyWord is empty.
+	 * @throws SQLException Error SQL Request or Timeout connection.
+	 * @throws ClassNotFoundException he Driver Class isn't found.
+	 */
 	List<Training> displayListByKeyWord(String keyWord) throws SQLException, ClassNotFoundException;
 
 	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite)
