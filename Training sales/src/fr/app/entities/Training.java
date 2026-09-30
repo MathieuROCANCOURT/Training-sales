@@ -11,15 +11,40 @@ import java.util.List;
  * @author RocancourtM
  */
 public class Training {
+	/**
+	 * Draw a line to separate the column headers, the title, and the content into
+	 * columns.
+	 */
 	private static final String SEPARATOR_HEADER = '\n' + new String(new char[90]).replace('\0', '-');
+	/**
+	 * A header format that left-aligns headers and inserts the necessary spaces.
+	 */
 	private static final String HEADER_FORMAT = String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s",
 			"Formation", "Description", "Durée (j)", "Sur site", "Prix (€)");
 
+	/**
+	 * Training course id.
+	 */
 	private int id;
+	/**
+	 * Training course name.
+	 */
 	private String name;
+	/**
+	 * Training course description.
+	 */
 	private String description;
+	/**
+	 * Training course duration represent in day.
+	 */
 	private int duration;
+	/**
+	 * true is it's on-site, else it's on remote.
+	 */
 	private boolean isInPerson;
+	/**
+	 * Training course price.
+	 */
 	private float price;
 
 	/**
