@@ -32,7 +32,7 @@ public class StockTrainingImpl implements StockTraining {
 
 	@Override
 	public void addTraining(String name, String description, int duration, boolean isInPerson, float price)
-			throws SQLException, ClassNotFoundException {
+			throws SQLException, ClassNotFoundException, IllegalArgumentException {
 		if (name == null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Le nom est obligatoire");
 		}
