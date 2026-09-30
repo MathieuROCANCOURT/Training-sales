@@ -11,7 +11,7 @@ import fr.app.dao.TrainingDao;
 import fr.app.entities.Training;
 
 public class TestJdbc {
-	public static void main(String[] args) throws SQLException, IllegalArgumentException {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, IllegalArgumentException {
 		try (PreparedStatement st = DatabaseConnection.getConnection()
 				.prepareStatement("ALTER TABLE training AUTO_INCREMENT = 1");) {
 			st.executeUpdate();
