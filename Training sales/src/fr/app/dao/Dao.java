@@ -22,6 +22,7 @@ public interface Dao<T> {
 	 * 
 	 * @param t Object to create in database.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public void create(T t) throws SQLException, ClassNotFoundException;
 
@@ -30,6 +31,7 @@ public interface Dao<T> {
 	 * 
 	 * @return List of all elements in a table.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public List<T> readAll() throws SQLException, ClassNotFoundException;
 
@@ -39,6 +41,7 @@ public interface Dao<T> {
 	 * @param id Id to read in database.
 	 * @return The object associates by id.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public T read(int id) throws SQLException, ClassNotFoundException;
 
@@ -47,6 +50,7 @@ public interface Dao<T> {
 	 * 
 	 * @param t Object to update in database.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public void update(T t) throws SQLException, ClassNotFoundException;
 
@@ -55,6 +59,7 @@ public interface Dao<T> {
 	 * 
 	 * @param t Object to create in database.
 	 * @throws SQLException Generate an error SQL request.
+	 * @throws ClassNotFoundException The Driver Class isn't found.
 	 */
 	public void delete(T t) throws SQLException, ClassNotFoundException;
 }
