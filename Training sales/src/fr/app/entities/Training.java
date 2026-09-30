@@ -132,6 +132,8 @@ public class Training {
 		return "[" + id + "] Cours de " + name + ", description:" + description + "\n, cette formation dure " + duration
 				+ " jour(s), " + strInPerson + ". \nLe prix est de " + price + "€.";
 	}
+	
+	
 
 	/**
 	 * Display on console the list of all training courses.<br>
@@ -142,11 +144,6 @@ public class Training {
 	 * 
 	 */
 	public static void displayList(List<Training> listTraining) {
-		System.out.println("Voici la liste des formations\n" + new String(new char[90]).replace('\0', '-'));
-		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
-				"Durée (j)", "Sur site", "Prix (€)"));
-		System.out.println(new String(new char[90]).replace('\0', '-'));
-
 		for (Training training : listTraining) {
 			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
 					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
@@ -154,74 +151,32 @@ public class Training {
 
 		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
+	
+	public static void displayTitleAndHeaders(String keyWord, boolean onSite) {
+		String beginTitle = "Voici la liste des formations ".concat(onSite ? "en présentiel" : "en distanciel");
+		
+		if (keyWord.isEmpty()) {
+			System.out.println( beginTitle + ".\n" + new String(new char[90]).replace('\0', '-'));
+		} else {
+			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + ".\n" + new String(new char[90]).replace('\0', '-'));
+		}
 
-	/**
-	 * Display on console the list of all training courses.<br>
-	 * Use this documentation to format string:
-	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
-	 * 
-	 * @param listTraining List of all training courses, filtered by keyword.
-	 * @param keyWord      Keyword filter.
-	 */
-	public static void displayList(List<Training> listTraining, String keyWord) {
-		System.out.println("Voici la liste des formations en filtrant avec le mot: " + keyWord + "\n"
-				+ new String(new char[90]).replace('\0', '-'));
 		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
 				"Durée (j)", "Sur site", "Prix (€)"));
 		System.out.println(new String(new char[90]).replace('\0', '-'));
-
-		for (Training training : listTraining) {
-			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
-					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
-		}
-
-		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
+	
+	public static void displayTitleAndHeaders(String keyWord) {
+		String beginTitle = "Voici la liste des formations";
+		
+		if (keyWord.isEmpty()) {
+			System.out.println(beginTitle + ".\n" + new String(new char[90]).replace('\0', '-'));
+		} else {
+			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + ".\n" + new String(new char[90]).replace('\0', '-'));
+		}
 
-	/**
-	 * Display on console the list of all training courses.<br>
-	 * Use this documentation to format string:
-	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
-	 * 
-	 * @param listTraining List of all training courses, filtered by onSite.
-	 * @param onSite
-	 */
-	public static void displayList(List<Training> listTraining, boolean onSite) {
-		System.out.println("Voici la liste des formations " + (onSite ? "en présentiel" : "en distanciel") + "\n"
-				+ new String(new char[90]).replace('\0', '-'));
 		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
 				"Durée (j)", "Sur site", "Prix (€)"));
 		System.out.println(new String(new char[90]).replace('\0', '-'));
-
-		for (Training training : listTraining) {
-			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
-					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
-		}
-
-		System.out.println(new String(new char[90]).replace('\0', '='));
-	}
-
-	/**
-	 * Display on console the list of all training courses.<br>
-	 * Use this documentation to format string:
-	 * {@link https://www.w3reference.com/blog/java-printf-print-formatted-string-to-console/}
-	 * 
-	 * @param listTraining List of all training courses, filtered by onSite and keyWord.
-	 * @param keyWord
-	 * @param onSite
-	 */
-	public static void displayList(List<Training> listTraining, String keyWord, boolean onSite) {
-		System.out.println("Voici la liste des formations " + (onSite ? "en présentiel" : "en distanciel")
-				+ " en filtrant avec le mot: " + keyWord + "\n" + new String(new char[90]).replace('\0', '-'));
-		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
-				"Durée (j)", "Sur site", "Prix (€)"));
-		System.out.println(new String(new char[90]).replace('\0', '-'));
-
-		for (Training training : listTraining) {
-			System.out.println(String.format("%-20.20s | %-30.30s | %-9d | %-8.8s | %-3.2f", training.name,
-					training.description, training.duration, training.isInPerson ? "Oui" : "Non", training.getPrice()));
-		}
-
-		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
 }
