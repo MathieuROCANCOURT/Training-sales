@@ -27,6 +27,9 @@ public class DatabaseConnection {
 	 */
 	private static final String PASSWORD = System.getProperty("database.password");
 
+	/**
+	 * DatabaseConnection Constructor.
+	 */
 	private DatabaseConnection() {
 	}
 
