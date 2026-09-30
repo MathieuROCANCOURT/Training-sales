@@ -32,7 +32,7 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Bienvenue sur le site pour la vente de formation.");
-		Training.displayList(training.listTraining());
+		Training.displayList(training.displayListByKeyWord(""));
 
 		while (continueLoop) {
 			System.out.print("Quelle mot clé voulez-vous cherchez ? ('EXIT' pour sortir/Entrée pour aucun mot clé):");
@@ -46,28 +46,18 @@ public class App {
 						"Voulez-vous un filtrage en présentiel ou distanciel ? ['p':présentiel/'d':distanciel/non par défaut]");
 				String inputUserOnSite = sc.nextLine();
 
-				if (inputUser.isEmpty()) {
-					switch (inputUserOnSite.toLowerCase()) {
-					case "p":
-						Training.displayList(training.filterOnSiteOrRemote(true), true);
-						break;
-					case "d":
-						Training.displayList(training.filterOnSiteOrRemote(false), false);
-						break;
-					default:
-						Training.displayList(training.listTraining());
-					}
-				} else {
-					switch (inputUserOnSite.toLowerCase()) {
-					case "p":
-						Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, true), inputUser, true);
-						break;
-					case "d":
-						Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, false), inputUser, false);
-						break;
-					default:
-						Training.displayList(training.searchByKeyWord(inputUser), inputUser);
-					}
+				switch (inputUserOnSite.toLowerCase()) {
+				case "p":
+					Training.displayTitleAndHeaders(inputUser, true);
+					Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, true));
+					break;
+				case "d":
+					Training.displayTitleAndHeaders(inputUser, false);
+					Training.displayList(training.filterKeywordAndOnSiteOrRemote(inputUser, false));
+					break;
+				default:
+					Training.displayTitleAndHeaders(inputUser);
+					Training.displayList(training.displayListByKeyWord(inputUser));
 				}
 			}
 		}
