@@ -23,7 +23,7 @@ public interface Dao<T> {
 	 * @param t Object to create in database.
 	 * @throws SQLException Generate an error SQL request.
 	 */
-	public void create(T t) throws SQLException;
+	public void create(T t) throws SQLException, ClassNotFoundException;
 
 	/**
 	 * Read all objects in database with associated table.
@@ -31,7 +31,7 @@ public interface Dao<T> {
 	 * @return List of all elements in a table.
 	 * @throws SQLException Generate an error SQL request.
 	 */
-	public List<T> readAll() throws SQLException;
+	public List<T> readAll() throws SQLException, ClassNotFoundException;
 
 	/**
 	 * Read an object in database with associated table and associated id.
@@ -40,7 +40,7 @@ public interface Dao<T> {
 	 * @return The object associates by id.
 	 * @throws SQLException Generate an error SQL request.
 	 */
-	public T read(int id) throws SQLException;
+	public T read(int id) throws SQLException, ClassNotFoundException;
 
 	/**
 	 * Update an object in database with associated table and associated id.
@@ -48,7 +48,7 @@ public interface Dao<T> {
 	 * @param t Object to update in database.
 	 * @throws SQLException Generate an error SQL request.
 	 */
-	public void update(T t) throws SQLException;
+	public void update(T t) throws SQLException, ClassNotFoundException;
 
 	/**
 	 * Delete an object in database with table associated.
@@ -56,5 +56,5 @@ public interface Dao<T> {
 	 * @param t Object to create in database.
 	 * @throws SQLException Generate an error SQL request.
 	 */
-	public void delete(T t) throws SQLException;
+	public void delete(T t) throws SQLException, ClassNotFoundException;
 }
