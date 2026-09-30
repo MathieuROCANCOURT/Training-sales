@@ -157,6 +157,13 @@ public class Training {
 		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
 
+	/**
+	 * Display on console title and headers table with separators.
+	 * 
+	 * @param keyWord The word used to filter the list by name and description.
+	 * @param onSite  Used to filter the list list if it's on-site (true) or remote
+	 *                (false).
+	 */
 	public static void displayTitleAndHeaders(String keyWord, boolean onSite) {
 		String beginTitle = "Voici la liste des formations ".concat(onSite ? "en présentiel" : "en distanciel");
 
@@ -169,6 +176,12 @@ public class Training {
 		System.out.println(HEADER_FORMAT + SEPARATOR_HEADER);
 	}
 
+	/**
+	 * Display on console title and headers table with separators.
+	 * 
+	 * @param keyWord The word used to filter the list by name and description (word
+	 *                empty: no filter).
+	 */
 	public static void displayTitleAndHeaders(String keyWord) {
 		String beginTitle = "Voici la liste des formations";
 
