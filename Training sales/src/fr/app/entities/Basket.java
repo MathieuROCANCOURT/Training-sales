@@ -59,11 +59,24 @@ public class Basket {
 			this.setTotalPrice(totalPrice + training.getPrice());
 		}
 	}
-	
+
 	public void removeToBasket(Training training) {
 		if (!this.isBuy && this.listTraining.contains(training)) {
 			this.listTraining.remove(training);
 			this.setTotalPrice(totalPrice - training.getPrice());
 		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuffer basket = new StringBuffer("Voici le panier n°" + id + ":\n");
+		
+		for (Training training : listTraining) {
+			basket.append(training.toString());
+		}
+		
+		basket.append("Prix total: " + this.getTotalPrice() + "€.");
+		basket.append(isBuy ? "Payer." : "Non payer.");
+		return basket.toString();
 	}
 }
