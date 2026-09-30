@@ -32,6 +32,7 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("Bienvenue sur le site pour la vente de formation.");
+		Training.displayTitleAndHeaders("");
 		Training.displayList(training.displayListByKeyWord(""));
 
 		while (continueLoop) {
