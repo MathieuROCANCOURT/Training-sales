@@ -56,12 +56,14 @@ public class Basket {
 	public void addToBasket(Training training) {
 		if (!this.isBuy) {
 			this.listTraining.add(training);
+			this.setTotalPrice(totalPrice + training.getPrice());
 		}
 	}
 	
 	public void removeToBasket(Training training) {
 		if (!this.isBuy && this.listTraining.contains(training)) {
 			this.listTraining.remove(training);
+			this.setTotalPrice(totalPrice - training.getPrice());
 		}
 	}
 }
