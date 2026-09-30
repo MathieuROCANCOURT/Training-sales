@@ -29,7 +29,7 @@ public class StockTrainingImpl implements StockTraining {
 
 	@Override
 	public void addTraining(String name, String description, int duration, boolean isInPerson, float price)
-			throws SQLException {
+			throws SQLException, ClassNotFoundException {
 		if (name == null || name.trim().isEmpty()) {
 			throw new IllegalArgumentException("Le nom est obligatoire");
 		}
@@ -46,7 +46,7 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public List<Training> displayListByKeyWord(String keyWord) throws SQLException {
+	public List<Training> displayListByKeyWord(String keyWord) throws SQLException, ClassNotFoundException {
 		if (keyWord.isEmpty()) {
 			return this.trainingDao.readAll();
 		}
@@ -54,7 +54,7 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException {
+	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException, ClassNotFoundException {
 		if (keyWord.isEmpty()) {
 			return this.trainingDao.filterOnSiteOrRemote(onSite);
 		}
