@@ -54,4 +54,10 @@ public class Basket {
 			this.listTraining.add(training);
 		}
 	}
+	
+	public void removeToBasket(Training training) {
+		if (!this.isBuy && this.listTraining.contains(training)) {
+			this.listTraining.remove(training);
+		}
+	}
 }
