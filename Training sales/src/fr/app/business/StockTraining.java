@@ -12,9 +12,9 @@ import fr.app.entities.Training;
  */
 public interface StockTraining {
 	void addTraining(String name, String description, int duration, boolean isInPerson, float price)
-			throws SQLException;
+			throws SQLException, ClassNotFoundException;
 
-	List<Training> displayListByKeyWord(String keyWord) throws SQLException;
+	List<Training> displayListByKeyWord(String keyWord) throws SQLException, ClassNotFoundException;
 
-	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException;
+	List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException, ClassNotFoundException;
 }
