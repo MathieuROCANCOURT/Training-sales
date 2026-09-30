@@ -13,30 +13,36 @@ import fr.app.entities.Training;
  * 
  */
 public class StockTrainingImpl implements StockTraining {
+	/**
+	 * Database Access Object to Training table.
+	 */
 	private final TrainingDao trainingDao;
 
 	/**
-	 * @param trainingDao
+	 * Create a StockTrainingImpl where user can interact with the database.
+	 * 
+	 * @param trainingDao Database Access Object to Training table.
 	 */
 	public StockTrainingImpl(TrainingDao trainingDao) {
 		this.trainingDao = trainingDao;
 	}
 
 	@Override
-	public void addTraining(String name, String description, int duration, boolean isInPerson, float price) throws SQLException {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Le nom est obligatoire");
-        }
-        if (description == null || description.trim().isEmpty()) {
-            throw new IllegalArgumentException("La description est obligatoire");
-        }
-        if (duration < 1) {
-            throw new IllegalArgumentException("La durée de la formation doit être strictement positif.");
-        }
-        if (price < 0) {
-        	throw new IllegalArgumentException("Le prix doit être positif.");
-        }
-        this.trainingDao.create(new Training(name, description, duration, isInPerson, price));
+	public void addTraining(String name, String description, int duration, boolean isInPerson, float price)
+			throws SQLException {
+		if (name == null || name.trim().isEmpty()) {
+			throw new IllegalArgumentException("Le nom est obligatoire");
+		}
+		if (description == null || description.trim().isEmpty()) {
+			throw new IllegalArgumentException("La description est obligatoire");
+		}
+		if (duration < 1) {
+			throw new IllegalArgumentException("La durée de la formation doit être strictement positif.");
+		}
+		if (price < 0) {
+			throw new IllegalArgumentException("Le prix doit être positif.");
+		}
+		this.trainingDao.create(new Training(name, description, duration, isInPerson, price));
 	}
 
 	@Override
@@ -46,7 +52,7 @@ public class StockTrainingImpl implements StockTraining {
 		}
 		return this.trainingDao.searchByKeyWord(keyWord);
 	}
-	
+
 	@Override
 	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException {
 		if (keyWord.isEmpty()) {
