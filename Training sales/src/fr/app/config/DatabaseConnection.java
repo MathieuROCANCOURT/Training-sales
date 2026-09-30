@@ -14,8 +14,17 @@ import java.util.logging.Logger;
  * @author RocancourtM
  */
 public class DatabaseConnection {
+	/**
+	 * URL used to connect to the 'training_sales' database.
+	 */
 	private static final String URL = "jdbc:mariadb://localhost:3306/training_sales";
+	/**
+	 * User used to connect to database.
+	 */
 	private static final String USER = "root";
+	/**
+	 * Password used to connect to database.
+	 */
 	private static final String PASSWORD = System.getProperty("database.password");
 
 	private DatabaseConnection() {
