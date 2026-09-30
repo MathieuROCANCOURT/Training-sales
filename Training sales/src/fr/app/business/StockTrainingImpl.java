@@ -10,7 +10,10 @@ import fr.app.dao.TrainingDao;
 import fr.app.entities.Training;
 
 /**
+ * StockTrainingImpl permit to check the data before send a SQL request to
+ * database. It's a checking before use {@link TrainingDao} class.
  * 
+ * @author RocancourtM
  */
 public class StockTrainingImpl implements StockTraining {
 	/**
@@ -54,7 +57,8 @@ public class StockTrainingImpl implements StockTraining {
 	}
 
 	@Override
-	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite) throws SQLException, ClassNotFoundException {
+	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean onSite)
+			throws SQLException, ClassNotFoundException {
 		if (keyWord.isEmpty()) {
 			return this.trainingDao.filterOnSiteOrRemote(onSite);
 		}
