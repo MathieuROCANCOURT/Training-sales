@@ -1,8 +1,5 @@
 package fr.app.test;
 
-
-import org.junit.jupiter.api.Test;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Logger;
@@ -42,19 +39,15 @@ public class TestJdbc {
 			System.out.println(trainingTest);
 			System.out.println(trainingDao.read(8));
 			
-			trainingTest.setId(15);
-			trainingDao.delete(trainingTest);
-			trainingTest.setId(16);
-			trainingDao.delete(trainingTest);
-			trainingTest.setId(17);
-			trainingDao.delete(trainingTest);
-			trainingTest.setId(10);
-			
 			trainingTest.setPrice(-2.3f);
 			trainingDao.update(trainingTest);
 			System.out.println(trainingDao.read(10));
 			
+			trainingDao.delete(trainingTest);
+			System.out.println(trainingDao.read(10));
 			
+			Training.displayTitleAndHeaders("");
+			Training.displayList(stockTraining.displayListByKeyWord(""));
 		} catch (SQLException | IllegalArgumentException e) {
 			Logger logger = Logger.getAnonymousLogger();
 			logger.severe(e.getLocalizedMessage());
