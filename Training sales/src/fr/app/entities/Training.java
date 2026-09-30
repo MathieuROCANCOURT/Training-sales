@@ -11,6 +11,10 @@ import java.util.List;
  * @author RocancourtM
  */
 public class Training {
+	private static final String SEPARATOR_HEADER = '\n' + new String(new char[90]).replace('\0', '-');
+	private static final String HEADER_FORMAT = String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s",
+			"Formation", "Description", "Durée (j)", "Sur site", "Prix (€)");
+
 	private int id;
 	private String name;
 	private String description;
@@ -132,8 +136,6 @@ public class Training {
 		return "[" + id + "] Cours de " + name + ", description:" + description + "\n, cette formation dure " + duration
 				+ " jour(s), " + strInPerson + ". \nLe prix est de " + price + "€.";
 	}
-	
-	
 
 	/**
 	 * Display on console the list of all training courses.<br>
@@ -151,32 +153,28 @@ public class Training {
 
 		System.out.println(new String(new char[90]).replace('\0', '='));
 	}
-	
+
 	public static void displayTitleAndHeaders(String keyWord, boolean onSite) {
 		String beginTitle = "Voici la liste des formations ".concat(onSite ? "en présentiel" : "en distanciel");
-		
+
 		if (keyWord.isEmpty()) {
-			System.out.println( beginTitle + ".\n" + new String(new char[90]).replace('\0', '-'));
+			System.out.println(beginTitle + '.' + SEPARATOR_HEADER);
 		} else {
-			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + ".\n" + new String(new char[90]).replace('\0', '-'));
+			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + SEPARATOR_HEADER);
 		}
 
-		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
-				"Durée (j)", "Sur site", "Prix (€)"));
-		System.out.println(new String(new char[90]).replace('\0', '-'));
+		System.out.println(HEADER_FORMAT + SEPARATOR_HEADER);
 	}
-	
+
 	public static void displayTitleAndHeaders(String keyWord) {
 		String beginTitle = "Voici la liste des formations";
-		
+
 		if (keyWord.isEmpty()) {
-			System.out.println(beginTitle + ".\n" + new String(new char[90]).replace('\0', '-'));
+			System.out.println(beginTitle + '.' + SEPARATOR_HEADER);
 		} else {
-			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + ".\n" + new String(new char[90]).replace('\0', '-'));
+			System.out.println(beginTitle + " en filtrant avec le mot: " + keyWord + '.' + SEPARATOR_HEADER);
 		}
 
-		System.out.println(String.format("%-20.20s | %-30.30s | %-9.9s | %-8.8s | %-8.8s", "Formation", "Description",
-				"Durée (j)", "Sur site", "Prix (€)"));
-		System.out.println(new String(new char[90]).replace('\0', '-'));
+		System.out.println(HEADER_FORMAT + SEPARATOR_HEADER);
 	}
 }
