@@ -29,4 +29,24 @@ public class Basket {
 		this.isBuy = isBuy;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Training> getListTraining() {
+		return listTraining;
+	}
+
+	public float getTotalPrice() {
+		return totalPrice;
+	}
+
+	public boolean isBuy() {
+		return isBuy;
+	}
+
 }
