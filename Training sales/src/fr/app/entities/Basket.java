@@ -25,7 +25,7 @@ public class Basket {
 	 */
 	public Basket(List<Training> listTraining, float totalPrice, boolean isBuy) {
 		this.listTraining = listTraining;
-		this.totalPrice = totalPrice;
+		this.setTotalPrice(totalPrice);
 		this.isBuy = isBuy;
 	}
 
@@ -43,6 +43,10 @@ public class Basket {
 
 	public float getTotalPrice() {
 		return Float.parseFloat(String.format("%.2f", totalPrice));
+	}
+
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = Float.parseFloat(String.format("%.2f", totalPrice));
 	}
 
 	public boolean isBuy() {
