@@ -149,6 +149,14 @@ public class TrainingDao implements Dao<Training> {
 		return listTraining;
 	}
 
+	/**
+	 * Read all training courses and filter by on-site (true) or remote (false) AND filter by on-site (true) or remote (false) from database.
+	 * 
+	 * @param keyWord  Word to filter in SQL request within name and description.
+	 * @param filterOnSite Filter by on-site if true, else filter by remote.
+	 * @return A List of all rows in a table that meet the filter criteria.
+	 * @throws SQLException Generate an error SQL request.
+	 */
 	public List<Training> filterKeywordAndOnSiteOrRemote(String keyWord, boolean filterOnSite) throws SQLException {
 		List<Training> listTraining = new ArrayList<Training>();
 		String execute = "SELECT tr_id_training, tr_name, tr_description, tr_duration, tr_inperson, tr_price FROM training "
