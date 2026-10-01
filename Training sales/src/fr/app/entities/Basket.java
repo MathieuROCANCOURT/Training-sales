@@ -49,7 +49,7 @@ public class Basket {
 		this.totalPrice = Float.parseFloat(String.format("%.2f", totalPrice));
 	}
 
-	public boolean isBuy() {
+	public boolean getIsBuy() {
 		return isBuy;
 	}
 
