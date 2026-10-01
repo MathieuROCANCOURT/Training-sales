@@ -35,7 +35,7 @@ public class User {
 		this.setFirstname(firstname);
 		this.eMail = eMail;
 		this.address = address;
-		this.phoneNumber = phoneNumber;
+		this.setPhoneNumber(phoneNumber);
 		this.listBasket = listBasket;
 	}
 
@@ -53,7 +53,7 @@ public class User {
 		this.setFirstname(firstname);
 		this.eMail = eMail;
 		this.address = address;
-		this.phoneNumber = phoneNumber;
+		this.setPhoneNumber(phoneNumber);
 		this.listBasket = listBasket;
 	}
 
@@ -128,6 +128,8 @@ public class User {
 	 * @param phoneNumber the phoneNumber to set
 	 */
 	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+		if (phoneNumber.length() == 10 && phoneNumber.matches("\\d")) {
+			this.phoneNumber = phoneNumber;
+		}
 	}
 }
