@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -57,7 +58,23 @@ public class BasketDao implements Dao<Basket> {
 
 	@Override
 	public List<Basket> readAll() throws SQLException, ClassNotFoundException {
-		return null;
+		List<Basket> listTraining = new ArrayList<Basket>();
+		List<Product> listproduct = new ArrayList<Product>();
+		String execute = "SELECT ba_id_basket, ba_total_price, ba_buy, co_id_training FROM basket "
+				+ "JOIN contains ON constains.co_id_basket = basket.ba_id_basket;";
+
+		try (PreparedStatement ps = DatabaseConnection.getConnection().prepareStatement(execute)) {
+			try (ResultSet rs = ps.executeQuery()) {
+				while (rs.next()) {
+					listTraining.add(new Basket(rs.getInt(ID_BASKET_SQL), rs.getString(TOTAL_PRICE_SQL),
+							rs.getBoolean(TOTAL_PRICE_SQL)));
+				}
+			}
+		} catch (SQLException | ClassNotFoundException e) {
+			Logger logger = Logger.getAnonymousLogger();
+			logger.warning("Error read all training request: " + e.getLocalizedMessage());
+		}
+		return listTraining;
 	}
 
 	@Override
