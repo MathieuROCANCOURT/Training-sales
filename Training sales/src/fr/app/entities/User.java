@@ -5,6 +5,7 @@ package fr.app.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -30,8 +31,8 @@ public class User {
 	public User(int id, String lastname, String firstname, String eMail, Address address, String phoneNumber,
 			List<Basket> listBasket) {
 		this.id = id;
-		this.lastname = lastname;
-		this.firstname = firstname;
+		this.setLastname(lastname);
+		this.setFirstname(firstname);
 		this.eMail = eMail;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
@@ -48,8 +49,8 @@ public class User {
 	 */
 	public User(String lastname, String firstname, String eMail, Address address, String phoneNumber,
 			List<Basket> listBasket) {
-		this.lastname = lastname;
-		this.firstname = firstname;
+		this.setLastname(lastname);
+		this.setFirstname(firstname);
 		this.eMail = eMail;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
@@ -81,7 +82,9 @@ public class User {
 	 * @param lastname the lastname to set
 	 */
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		if (lastname != null && !lastname.isEmpty()) {
+			this.lastname = lastname;
+		}
 	}
 
 	/**
@@ -95,7 +98,9 @@ public class User {
 	 * @param firstname the firstname to set
 	 */
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		if (firstname != null && !firstname.isEmpty()) {
+			this.firstname = firstname;
+		}
 	}
 
 	/**
