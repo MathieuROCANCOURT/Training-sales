@@ -132,4 +132,12 @@ public class User {
 			this.phoneNumber = phoneNumber;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Voici les coordonnées de l'utilisateur:\nNom: " + lastname + ", Prénom: " + firstname + "\nCourriel="
+				+ eMail + "\nAdresse: " + address.toString() + "\nNuméro de téléphone: " + phoneNumber
+				+ "\nVoici la liste de vos paniers:\n" + listBasket.toString();
+	}
+
 }
